@@ -163,7 +163,7 @@ def evaluate_step(step_name, X_train_step, X_test_step, y_train_step, y_test_ste
 # ------------------------
 
 # 1. Load & split
-data = pd.read_csv(r'C:\Users\haru2\OneDrive\Desktop\Group15\train_data_A.csv')
+data = pd.read_csv('train_data_A.csv')
 print(f"Total data size: {len(data)}")  # Print data size
 
 X = data.iloc[:, :-1]
