@@ -107,18 +107,15 @@ def evaluate_step(step_name, X_train_step, X_test_step, y_train_step, y_test_ste
 data = pd.read_csv('train_data_A.csv')
 print(f"Total data size: {len(data)}")  # Print total dataset size
 
-# 2. Separate features and target
-X = data.iloc[:, :-1]
-y = data.iloc[:, -1]
+X_train_raw = data.iloc[:, :-1]
+y_train_raw = data.iloc[:, -1]
 
-# 3. Shuffle and split data into training and testing sets (70/30 split)
-np.random.seed(42)
-indices = np.random.permutation(len(X))
-train_size = int(0.7 * len(X))
-train_indices = indices[:train_size]
-test_indices = indices[train_size:]
-X_train_raw, X_test_raw = X.iloc[train_indices], X.iloc[test_indices]
-y_train_raw, y_test = y.iloc[train_indices], y.iloc[test_indices]
+# 2. Load test data
+data_test = pd.read_csv('test_data_A.csv')
+print(f"Test data size: {len(data_test)}")
+
+X_test_raw = data_test.iloc[:, :-1]
+y_test = data_test.iloc[:, -1]
 
 # --- Original Data ---
 evaluate_step("Original", X_train_raw.copy(), X_test_raw.copy(), y_train_raw.copy(), y_test)
